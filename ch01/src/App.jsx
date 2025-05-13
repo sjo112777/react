@@ -19,6 +19,7 @@ import './App.css'
     - React Developer Tool
 
   프로젝트 생성
+  > Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
    > npm create vite@latest
     - React 선택, Javascript + SWC 선택
 
