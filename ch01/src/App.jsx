@@ -25,7 +25,7 @@ import './App.css'
 
   프로젝트 실행
   > npm run dev 
-
+  >npm install
 */
 function App() {  
 
