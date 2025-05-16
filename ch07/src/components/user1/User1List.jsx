@@ -2,18 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const User1List = () => {
-  // 기본 state
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
-  // 마운트(렌더링) 되기 전에 데이터 가져오기
   useEffect(() => {
     console.log("here...1");
     axios
       .get("http://localhost:8080/ch09/user1")
       .then((response) => {
-        console.log("here...2 : " + response);
+        console.log("here...2");
         setUsers(response.data);
       })
       .catch((err) => {
@@ -21,11 +21,35 @@ export const User1List = () => {
       });
   }, []);
 
+  // 수정하기
+  const modifyHandler = (user) => {
+    console.log(user);
+
+    // 수정 컴포넌트 전환
+    navigate(`/user1/modify?uid=${user.uid}`);
+  };
+
+  // 삭제하기
+  const deleteHandler = (user) => {
+    axios
+      .delete(`http://localhost:8080/ch09/user1/${user.uid}`)
+      .then((response) => {
+        console.log(response.data);
+
+        // 목록 갱신을 위해서 state 업데이트
+        setUsers(users.filter((u) => u.uid !== user.uid));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //prettier-ignore
   return (
     <div className="User1List">
       <h4>User1 목록</h4>
-      <table border={1}>
-        <thead>
+      <table border="1">
+        <tbody>
           <tr>
             <th>아이디</th>
             <th>이름</th>
@@ -33,8 +57,7 @@ export const User1List = () => {
             <th>나이</th>
             <th>관리</th>
           </tr>
-        </thead>
-        <tbody>
+          
           {users.map((user, index) => (
             <tr key={index}>
               <td>{user.uid}</td>
@@ -42,11 +65,12 @@ export const User1List = () => {
               <td>{user.hp}</td>
               <td>{user.age}</td>
               <td>
-                <button onClick={null}>수정</button>
-                <button onClick={null}>삭제</button>
+                <button onClick={()=>{modifyHandler(user)}}>수정</button>
+                <button onClick={()=>{deleteHandler(user)}}>삭제</button>
               </td>
             </tr>
           ))}
+          
         </tbody>
       </table>
     </div>
