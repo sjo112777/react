@@ -1,13 +1,16 @@
 import React from "react";
 import { MainLayout } from "../../layouts/MainLayout";
 import { SubLayout } from "../../layouts/SubLayout";
+import List from "../../components/board/List";
 
-export const NoticePage = () => {
+const ListPage = () => {
   return (
     <MainLayout>
       <SubLayout>
-        <h3>공지사항</h3>
+        <List />
       </SubLayout>
     </MainLayout>
   );
 };
+
+export default ListPage;

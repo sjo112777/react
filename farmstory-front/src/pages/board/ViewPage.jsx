@@ -1,13 +1,16 @@
 import React from "react";
 import { MainLayout } from "../../layouts/MainLayout";
 import { SubLayout } from "../../layouts/SubLayout";
+import View from "../../components/board/View";
 
-export const MenuPage = () => {
+const ViewPage = () => {
   return (
     <MainLayout>
       <SubLayout>
-        <h3>오늘의식단</h3>
+        <View />
       </SubLayout>
     </MainLayout>
   );
 };
+
+export default ViewPage;

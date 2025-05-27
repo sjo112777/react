@@ -1,13 +1,16 @@
 import React from "react";
 import { MainLayout } from "../../layouts/MainLayout";
 import { SubLayout } from "../../layouts/SubLayout";
+import Write from "../../components/board/Write";
 
-export const SchoolPage = () => {
+const WritePage = () => {
   return (
     <MainLayout>
       <SubLayout>
-        <h3>귀농학교</h3>
+        <Write />
       </SubLayout>
     </MainLayout>
   );
 };
+
+export default WritePage;

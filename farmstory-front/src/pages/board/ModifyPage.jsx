@@ -1,13 +1,16 @@
 import React from "react";
 import { MainLayout } from "../../layouts/MainLayout";
 import { SubLayout } from "../../layouts/SubLayout";
+import Modify from "../../components/board/Modify";
 
-export const ChefPage = () => {
+const ModifyPage = () => {
   return (
     <MainLayout>
       <SubLayout>
-        <h3>나도요리사</h3>
+        <Modify />
       </SubLayout>
     </MainLayout>
   );
 };
+
+export default ModifyPage;
