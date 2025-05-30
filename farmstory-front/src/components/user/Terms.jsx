@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getTerms } from "../../api/userAPI";
 
 export const Terms = () => {
@@ -6,8 +7,10 @@ export const Terms = () => {
   const [privacyText, setPrivacyText] = useState("");
 
   useEffect(() => {
+    // 약관 데이터 fetch 비동기 함수
     const fetchData = async () => {
       try {
+        // 약관 데이터 요청하기
         const data = await getTerms();
 
         setTermsText(data.terms);
@@ -17,6 +20,7 @@ export const Terms = () => {
       }
     };
 
+    // 호출
     fetchData();
   }, []);
 
@@ -47,12 +51,12 @@ export const Terms = () => {
         </tr>
       </table>
       <div>
-        <a href="./login.html" className="btn btnCancel">
+        <Link to="/user/login" className="btn btnCancel">
           취소
-        </a>
-        <a href="./register.html" className="btn btnNext">
+        </Link>
+        <Link to="/user/register" className="btn btnNext">
           다음
-        </a>
+        </Link>
       </div>
     </section>
   );
